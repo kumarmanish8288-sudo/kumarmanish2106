@@ -1215,8 +1215,6 @@
             filterPublications('all'); // Initialize the publication list
 
         });
-
-    </script>
  <a
     id="cy-effective-orcid-url"
     class="underline"
@@ -1230,6 +1228,8 @@
         alt="ORCID iD icon"/>
       https://orcid.org/0000-0001-6053-3667
     </a>
+    </script>
+
 
 </body>
 
