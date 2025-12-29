@@ -1,867 +1,135 @@
 <!DOCTYPE html>
-
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Dr. Manish Kumar - Academic & Research Profile</title>
-
- <a
-    id="cy-effective-orcid-url"
-    class="underline"
-     href="https://orcid.org/0000-0001-6053-3667"
-     target="orcid.widget"
-     rel="me noopener noreferrer"
-     style="vertical-align: top">
-     <img
-        src="https://orcid.org/sites/default/files/images/orcid_16x16.png"
-        style="width: 1em; margin-inline-start: 0.5em"
-        alt="ORCID iD icon"/>
-      https://orcid.org/0000-0001-6053-3667
-    </a>
-   
-
-    <!-- Tailwind CSS -->
-
-    <script src="https://cdn.tailwindcss.com"></script>
-
-   
-
-    <!-- Chart.js -->
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
- 
-
-    <!-- Font Awesome for Icons -->
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
- 
-
-    <!-- Fonts -->
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
- 
-
-    <!-- Chosen Palette: Deep Academic Blue -->
-
-    <!-- Primary: Slate Blue (#334155), Secondary: Ocean Blue (#06b6d4), Accent: Warm Gray (#94a3b8), Background: Clean White (#ffffff) -->
-
- 
-
-    <style>
-
-        body {
-
-            font-family: 'Inter', sans-serif;
-
-            background-color: #f8fafc;
-
-            color: #1e293b;
-
-        }
-
-       
-
-        /* Custom Scrollbar */
-
-        ::-webkit-scrollbar {
-
-            width: 8px;
-
-        }
-
-        ::-webkit-scrollbar-track {
-
-            background: #f1f5f9;
-
-        }
-
-        ::-webkit-scrollbar-thumb {
-
-            background: #cbd5e1;
-
-            border-radius: 4px;
-
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-
-            background: #94a3b8;
-
-        }
-
- 
-
-        .card-hover {
-
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-        }
-
-        .card-hover:hover {
-
-            transform: translateY(-2px);
-
-            box-shadow: 0 15px 25px -5px rgba(6, 182, 212, 0.1), 0 5px 10px -5px rgba(6, 182, 212, 0.05);
-
-        }
-
- 
-
-        .chart-container {
-
-            position: relative;
-
-            width: 100%;
-
-            max-width: 650px;
-
-            height: 350px;
-
-            max-height: 400px;
-
-            margin: 0 auto;
-
-        }
-
-       
-
-        @media (min-width: 768px) {
-
-            .chart-container {
-
-                height: 400px;
-
-            }
-
-        }
-
-    </style>
-
- 
-
-    <!-- Application Structure Plan:
-
-         1. Header/Hero: Identity, Core Mission Statement, and Key Stats.
-
-         2. Interactive Dashboard (Research Overview): Dynamic Chart.js visualization of publication types and themes.
-
-         3. Publications & Conferences (Interactive List): Filterable and searchable list of journals/conferences for easy access to specific outputs.
-
-         4. Experience & Education (Timeline): Detailed career and academic journey.
-
-         5. Projects & Service: Dedicated section for major projects and institutional service roles.
-
-         6. Contact/Footer: All contact information and legal/personal details.
-
-        
-
-         Rationale: The site organizes a vast amount of academic data into visual and filterable components, allowing a recruiter or collaborator to quickly assess Dr. Kumar's profile (Hero/Dashboard) and then deep-dive into specific areas (Publications/Projects).
-
-    -->
-
- 
-
-    <!-- Visualization & Content Choices:
-
-         - Research Output Bar Chart: Used to visualize the volume of papers, conferences, and projects across his career, showing commitment to dissemination (30+ conferences).
-
-           Goal: Quantify impact. Interaction: Tooltip details.
-
-         - Interactive Publication List: HTML/JS list with dynamic filtering/searching by type (Journal/Conference) and keywords.
-
-           Goal: Allow users to find specific work. Interaction: Input field and category buttons.
-
-         - Timeline: Detailed HTML structure. Goal: Chronological clarity and comprehensive career mapping.
-
-         - Icons: FontAwesome. No SVG/Mermaid.
-
-    -->
-
-   
-
-    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
-
-</head>
-
-<body class="antialiased min-h-screen">
-
- 
-
-    <!-- Navigation Header -->
-
-    <header class="bg-white shadow-md sticky top-0 z-50">
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-            <div class="flex items-center justify-between h-20">
-
-                <div class="flex items-center">
-
-                    <span class="text-3xl font-extrabold text-slate-800">Dr. M. Kumar</span>
-
-                </div>
-
-                <nav class="hidden md:block">
-
-                    <div class="ml-10 flex items-baseline space-x-6">
-
-                        <button onclick="scrollToSection('research')" class="text-slate-600 hover:text-cyan-600 px-3 py-2 rounded-md font-medium transition">Research</button>
-
-                        <button onclick="scrollToSection('publications')" class="text-slate-600 hover:text-cyan-600 px-3 py-2 rounded-md font-medium transition">Publications</button>
-
-                        <button onclick="scrollToSection('experience')" class="text-slate-600 hover:text-cyan-600 px-3 py-2 rounded-md font-medium transition">Experience</button>
-
-                        <button onclick="scrollToSection('projects')" class="text-slate-600 hover:text-cyan-600 px-3 py-2 rounded-md font-medium transition">Projects</button>
-
-                        <button onclick="scrollToSection('contact')" class="bg-cyan-600 text-white hover:bg-cyan-700 px-4 py-2 rounded-full font-semibold transition shadow-lg">Contact</button>
-
-                    </div>
-
-                </nav>
-
-                <!-- Mobile menu button -->
-
-                <div class="-mr-2 flex md:hidden">
-
-                    <button onclick="toggleMobileMenu()" class="inline-flex items-center justify-center p-2 rounded-md text-slate-700 hover:text-cyan-600 hover:bg-slate-100 focus:outline-none">
-
-                        <i class="fas fa-bars"></i>
-
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <!-- Mobile Menu -->
-
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100">
-
-            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-
-                <button onclick="scrollToSection('research'); toggleMobileMenu()" class="text-slate-700 hover:bg-slate-50 block px-3 py-2 rounded-md font-medium w-full text-left">Research</button>
-
-                <button onclick="scrollToSection('publications'); toggleMobileMenu()" class="text-slate-700 hover:bg-slate-50 block px-3 py-2 rounded-md font-medium w-full text-left">Publications</button>
-
-                <button onclick="scrollToSection('experience'); toggleMobileMenu()" class="text-slate-700 hover:bg-slate-50 block px-3 py-2 rounded-md font-medium w-full text-left">Experience</button>
-
-                <button onclick="scrollToSection('projects'); toggleMobileMenu()" class="text-slate-700 hover:bg-slate-50 block px-3 py-2 rounded-md font-medium w-full text-left">Projects</button>
-
-                <button onclick="scrollToSection('contact'); toggleMobileMenu()" class="text-white bg-cyan-600 block px-3 py-2 rounded-md font-semibold w-full text-left mt-2">Contact</button>
-
-            </div>
-
-        </div>
-
-    </header>
-
- 
-
-    <!-- Main Content -->
-
-    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
-
- 
-
-        <!-- Hero Section: Overview & Key Facts -->
-
-        <section id="hero" class="bg-white rounded-xl shadow-2xl p-8 lg:p-12 border border-slate-100">
-
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10 items-center">
-
-                <div class="lg:col-span-2">
-
-                    <p class="text-lg font-semibold text-cyan-600 mb-2">Assistant Professor, IIT (BHU) | 20+ Years Experience</p>
-
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-800 leading-tight mb-6">Dr. Manish Kumar</h1>
-
-                    <p class="text-xl text-slate-700 italic border-l-4 border-cyan-500 pl-4 mb-8">
-
-                        "I merge advanced theoretical physics with practical renewable energy applications to solve real-world power challenges."
-
-                    </p>
-
-                    <div class="flex flex-wrap gap-4 text-sm font-medium">
-
-                        <span class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full"><i class="fas fa-atom mr-2 text-slate-500"></i>Plasma Physics</span>
-
-                        <span class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full"><i class="fas fa-sun mr-2 text-slate-500"></i>Renewable Energy</span>
-
-                        <span class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full"><i class="fas fa-bolt mr-2 text-slate-500"></i>Electrical Engineering</span>
-
-                        <span class="bg-slate-100 text-slate-700 px-3 py-1 rounded-full"><i class="fas fa-laptop-code mr-2 text-slate-500"></i>Generative AI & ML (Cert)</span>
-
-                    </div>
-
-                </div>
-
-                <div class="lg:col-span-1 grid grid-cols-3 lg:grid-cols-1 gap-4 lg:gap-6">
-
-                    <div class="bg-cyan-50 border-l-4 border-cyan-400 p-4 rounded-lg shadow-sm text-center card-hover">
-
-                        <div class="text-3xl font-bold text-cyan-700">14+</div>
-
-                        <div class="text-xs text-slate-500 uppercase tracking-wider">Refereed Papers</div>
-
-                    </div>
-
-                    <div class="bg-cyan-50 border-l-4 border-cyan-400 p-4 rounded-lg shadow-sm text-center card-hover">
-
-                        <div class="text-3xl font-bold text-cyan-700">34+</div>
-
-                        <div class="text-xs text-slate-500 uppercase tracking-wider">Conferences</div>
-
-                    </div>
-
-                    <div class="bg-cyan-50 border-l-4 border-cyan-400 p-4 rounded-lg shadow-sm text-center card-hover">
-
-                        <div class="text-3xl font-bold text-cyan-700">1</div>
-
-                        <div class="text-xs text-slate-500 uppercase tracking-wider">Book Published</div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-       
-
-        <!-- Section: Research Focus & Output (Interactive Dashboard) -->
-
-        <section id="research" class="bg-white rounded-xl shadow-lg p-6 lg:p-8 border border-slate-100">
-
-            <h2 class="text-3xl font-bold text-slate-800 mb-6 border-b pb-2">Research Overview: Focus & Productivity</h2>
-
-            <p class="text-slate-600 mb-8">
-
-                This dashboard visualizes the key areas of Dr. Kumar's scholarly activity. The chart below illustrates the relative volume of his academic output across different formats. His research interests span **Plasma Physics, Coherent and Terahertz Radiation, Renewable Energy Technologies, Photonics & Optics**, and include recent professional development in **Generative AI and Machine Learning**.
-
-            </p>
-
- 
-
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-
-                <!-- Chart: Output Distribution -->
-
-                <div class="flex flex-col items-center justify-center p-4">
-
-                    <h3 class="text-xl font-semibold text-slate-800 mb-4">Academic Output Distribution</h3>
-
-                    <div class="chart-container">
-
-                        <canvas id="outputChart"></canvas>
-
-                    </div>
-
-                </div>
-
- 
-
-                <!-- Text Focus & Skills -->
-
-                <div class="space-y-6">
-
-                    <div>
-
-                        <h3 class="text-xl font-semibold text-slate-800 flex items-center mb-3"><i class="fas fa-microchip mr-2 text-cyan-600"></i>Computational Skills</h3>
-
-                        <div class="flex flex-wrap gap-2">
-
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Generative AI</span>
-
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Machine Learning</span>
-
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">Mathematica</span>
-
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">MATLAB</span>
-
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">LabVIEW</span>
-
-                            <span class="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-sm">MHD & Fluid Theory</span>
-
-                        </div>
-
-                    </div>
-
-                    <div>
-
-                        <h3 class="text-xl font-semibold text-slate-800 flex items-center mb-3"><i class="fas fa-book-open mr-2 text-cyan-600"></i>Research Keywords</h3>
-
-                        <div class="flex flex-wrap gap-2">
-
-                            <span class="bg-cyan-50 text-cyan-700 px-3 py-1 rounded-full text-sm">Terahertz Radiation</span>
-
-                            <span class="bg-cyan-50 text-cyan-700 px-3 py-1 rounded-full text-sm">Photonics & Optics</span>
-
-                            <span class="bg-cyan-50 text-cyan-700 px-3 py-1 rounded-full text-sm">Smart Hybrid Energy Systems</span>
-
-                            <span class="bg-cyan-50 text-cyan-700 px-3 py-1 rounded-full text-sm">Coherent Radiation Generation</span>
-
-                            <span class="bg-cyan-50 text-cyan-700 px-3 py-1 rounded-full text-sm">Electrical Energy Theory</span>
-
-                            <span class="bg-cyan-50 text-cyan-700 px-3 py-1 rounded-full text-sm">Nonlinear Mixing of Lasers</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
- 
-
-        <!-- Section: Publications & Conferences (Interactive List) -->
-
-        <section id="publications" class="bg-white rounded-xl shadow-lg p-6 lg:p-8 border border-slate-100">
-
-            <h2 class="text-3xl font-bold text-slate-800 mb-6 border-b pb-2">Publications and Dissemination</h2>
-
-            <p class="text-slate-600 mb-6">
-
-                Explore the full list of Dr. Kumar's peer-reviewed journal papers and conference presentations. Use the filter buttons to narrow down the content by type or search keywords. All items are dynamically rendered from the provided academic record.
-
-            </p>
-
- 
-
-            <div class="flex flex-col sm:flex-row gap-4 mb-6">
-
-                <input type="text" id="publicationSearch" onkeyup="filterPublications()" placeholder="Search publications by title or journal..." class="flex-grow p-3 border border-gray-300 rounded-lg focus:ring-cyan-500 focus:border-cyan-500">
-
-                <button onclick="filterPublications('all')" class="bg-slate-100 text-slate-700 hover:bg-slate-200 px-4 py-3 rounded-lg font-medium transition whitespace-nowrap">All (48)</button>
-
-                <button onclick="filterPublications('journal')" class="bg-cyan-50 text-cyan-700 hover:bg-cyan-100 px-4 py-3 rounded-lg font-medium transition whitespace-nowrap">Journals (14)</button>
-
-                <button onclick="filterPublications('conference')" class="bg-cyan-50 text-cyan-700 hover:bg-cyan-100 px-4 py-3 rounded-lg font-medium transition whitespace-nowrap">Conferences (34)</button>
-
-            </div>
-
- 
-
-            <div id="publicationList" class="space-y-4">
-
-                <!-- Publication list items will be injected here by JS -->
-
-            </div>
-
-        </section>
-
- 
-
-        <!-- Section: Experience and Education Timeline -->
-
-        <section id="experience" class="bg-white rounded-xl shadow-lg p-6 lg:p-8 border border-slate-100">
-
-            <h2 class="text-3xl font-bold text-slate-800 mb-6 border-b pb-2">Academic & Professional Journey</h2>
-
-            <p class="text-slate-600 mb-8">
-
-                A timeline highlighting over two decades of professional experience, from his early engineering roles to his current position as Assistant Professor and his academic training at premier institutions like IIT Delhi and MNNIT.
-
-            </p>
-
- 
-
-            <div class="relative space-y-12">
-
-                <!-- Vertical timeline line -->
-
-                <div class="absolute w-0.5 bg-gray-300 h-full left-3 lg:left-1/2 lg:-translate-x-1/2"></div>
-
-               
-
-                <!-- Timeline Item: Assistant Professor -->
-
-                <div class="relative lg:grid lg:grid-cols-2 lg:gap-12 items-start">
-
-                    <div class="lg:col-span-1 lg:text-right lg:order-1">
-
-                        <h3 class="text-xl font-bold text-slate-800">Assistant Professor</h3>
-
-                        <p class="text-slate-600">IIT (BHU) Varanasi</p>
-
-                        <p class="text-sm font-semibold text-cyan-600">July 2004 - Present</p>
-
-                    </div>
-
-                    <div class="absolute left-0 top-0 lg:static lg:col-span-1 flex items-center lg:justify-start">
-
-                        <div class="w-7 h-7 bg-cyan-600 rounded-full border-4 border-white shadow-md z-10 flex items-center justify-center -ml-3.5 lg:ml-0"><i class="fas fa-university text-white text-xs"></i></div>
-
-                    </div>
-
-                    <div class="lg:col-span-1 bg-gray-50 p-4 rounded-lg shadow-sm ml-8 lg:ml-0 lg:order-2">
-
-                        <ul class="list-disc list-outside text-sm text-slate-700 pl-4 space-y-1">
-
-                            <li>13 years of Teaching experience to U.G. & P.G. Students.</li>
-
-                            <li>Guided 1 Ph.D. Student and multiple B. Tech. & IDD projects.</li>
-
-                            <li>Warden, Dhanrajgiri Hostel (2013-2015).</li>
-
-                            <li>Active member of CERD and various departmental committees.</li>
-
-                        </ul>
-
-                    </div>
-
-                </div>
-
- 
-
-                <!-- Timeline Item: JTO -->
-
-                <div class="relative lg:grid lg:grid-cols-2 lg:gap-12 items-start">
-
-                    <div class="lg:col-span-1 lg:text-right lg:order-2 bg-gray-50 p-4 rounded-lg shadow-sm mr-8 lg:mr-0">
-
-                         <ul class="list-disc list-outside text-sm text-slate-700 pl-4 space-y-1">
-
-                            <li>Operation & maintenance of BTS, BSC & MSC for mobile operations.</li>
-
-                            <li>CCN responsibilities.</li>
-
-                        </ul>
-
-                    </div>
-
-                    <div class="absolute left-0 top-0 lg:static lg:col-span-1 flex items-center lg:justify-end">
-
-                        <div class="w-7 h-7 bg-cyan-600 rounded-full border-4 border-white shadow-md z-10 flex items-center justify-center -ml-3.5 lg:ml-0"><i class="fas fa-phone-alt text-white text-xs"></i></div>
-
-                    </div>
-
-                    <div class="lg:col-span-1 lg:text-left lg:order-1 ml-8 lg:ml-0">
-
-                        <h3 class="text-xl font-bold text-slate-800">Junior Telecom Officer (J.T.O.)</h3>
-
-                        <p class="text-slate-600">Bharat Sanchar Nigam Limited (B.S.N.L.)</p>
-
-                        <p class="text-sm font-semibold text-cyan-600">Nov 2001 - July 2004</p>
-
-                    </div>
-
-                </div>
-
- 
-
-                <!-- Timeline Item: Ph.D. -->
-
-                <div class="relative lg:grid lg:grid-cols-2 lg:gap-12 items-start">
-
-                    <div class="lg:col-span-1 lg:text-right lg:order-1">
-
-                        <h3 class="text-xl font-bold text-slate-800">Ph.D. in Physics (Plasma Physics)</h3>
-
-                        <p class="text-slate-600">IIT Delhi</p>
-
-                        <p class="text-sm font-semibold text-cyan-600">Jan 2008 - Dec 2010</p>
-
-                    </div>
-
-                    <div class="absolute left-0 top-0 lg:static lg:col-span-1 flex items-center lg:justify-start">
-
-                        <div class="w-7 h-7 bg-slate-800 rounded-full border-4 border-white shadow-md z-10 flex items-center justify-center -ml-3.5 lg:ml-0"><i class="fas fa-graduation-cap text-white text-xs"></i></div>
-
-                    </div>
-
-                    <div class="lg:col-span-1 bg-gray-50 p-4 rounded-lg shadow-sm ml-8 lg:ml-0 lg:order-2">
-
-                        <p class="text-sm text-slate-700"><strong>Thesis:</strong> Coherent Radiation Generation by Particle Beams and Nonlinear Mixing of Lasers. (CGPA: 8.00)</p>
-
-                    </div>
-
-                </div>
-
- 
-
-                <!-- Timeline Item: M. Tech. -->
-
-                <div class="relative lg:grid lg:grid-cols-2 lg:gap-12 items-start">
-
-                    <div class="lg:col-span-1 lg:text-right lg:order-2 bg-gray-50 p-4 rounded-lg shadow-sm mr-8 lg:mr-0">
-
-                         <p class="text-sm text-slate-700"><strong>Project:</strong> Numerical solution of non-linearity in Alfven waves in plasmas. (CGPA: 8.5)</p>
-
-                    </div>
-
-                    <div class="absolute left-0 top-0 lg:static lg:col-span-1 flex items-center lg:justify-end">
-
-                        <div class="w-7 h-7 bg-slate-800 rounded-full border-4 border-white shadow-md z-10 flex items-center justify-center -ml-3.5 lg:ml-0"><i class="fas fa-graduation-cap text-white text-xs"></i></div>
-
-                    </div>
-
-                    <div class="lg:col-span-1 lg:text-left lg:order-1 ml-8 lg:ml-0">
-
-                        <h3 class="text-xl font-bold text-slate-800">M. Tech. in Energy Studies</h3>
-
-                        <p class="text-slate-600">IIT Delhi</p>
-
-                        <p class="text-sm font-semibold text-cyan-600">Year 2000</p>
-
-                    </div>
-
-                </div>
-
- 
-
-                <!-- Timeline Item: B.E. -->
-
-                <div class="relative lg:grid lg:grid-cols-2 lg:gap-12 items-start">
-
-                    <div class="lg:col-span-1 lg:text-right lg:order-1">
-
-                        <h3 class="text-xl font-bold text-slate-800">B.E. (Electrical Engineering)</h3>
-
-                        <p class="text-slate-600">MNNIT Allahabad</p>
-
-                        <p class="text-sm font-semibold text-cyan-600">Year 1997</p>
-
-                    </div>
-
-                    <div class="absolute left-0 top-0 lg:static lg:col-span-1 flex items-center lg:justify-start">
-
-                        <div class="w-7 h-7 bg-slate-800 rounded-full border-4 border-white shadow-md z-10 flex items-center justify-center -ml-3.5 lg:ml-0"><i class="fas fa-graduation-cap text-white text-xs"></i></div>
-
-                    </div>
-
-                    <div class="lg:col-span-1 bg-gray-50 p-4 rounded-lg shadow-sm ml-8 lg:ml-0 lg:order-2">
-
-                        <p class="text-sm text-slate-700"><strong>Project:</strong> Design of digital controller. (69.22% Marks)</p>
-
-                    </div>
-
-                </div>
-
- 
-
-            </div>
-
-        </section>
-
- 
-
-        <!-- Section: Major Projects and Infrastructure -->
-
-        <section id="projects" class="bg-white rounded-xl shadow-lg p-6 lg:p-8 border border-slate-100">
-
-            <h2 class="text-3xl font-bold text-slate-800 mb-6 border-b pb-2">Projects, Infrastructure & Service</h2>
-
-            <p class="text-slate-600 mb-8">
-
-                Dr. Kumar has initiated and led significant projects focused on energy systems and has actively contributed to institutional development at IIT (BHU).
-
-            </p>
-
- 
-
-            <div class="space-y-6">
-
-                <!-- Project 1: Integrated Dairy & Smart Hybrid Energy Systems -->
-
-                <div class="bg-slate-50 p-5 rounded-lg border border-slate-200 card-hover">
-
-                    <div class="flex items-center justify-between mb-2">
-
-                        <h3 class="text-xl font-bold text-cyan-700">1.5 MW Integrated Dairy & Smart Hybrid Energy Systems</h3>
-
-                        <i class="fas fa-industry text-2xl text-cyan-500"></i>
-
-                    </div>
-
-                    <p class="text-sm text-slate-600 mb-3">Small scale pilot project demonstrated in Ahirauli Khizirpur, Azamgarh (2016). Proposal for a 5-acre pilot research project sent to the State Planning Board of Meghalaya (2015).</p>
-
-                    <span class="inline-block bg-cyan-100 text-cyan-800 text-xs px-2 py-0.5 rounded-full font-semibold">Pilot Research</span>
-
-                </div>
-
- 
-
-                <!-- Project 2: Prototype Lab & CERD -->
-
-                <div class="bg-slate-50 p-5 rounded-lg border border-slate-200 card-hover">
-
-                    <div class="flex items-center justify-between mb-2">
-
-                        <h3 class="text-xl font-bold text-cyan-700">Prototype Lab & CERD Establishment</h3>
-
-                        <i class="fas fa-flask text-2xl text-cyan-500"></i>
-
-                    </div>
-
-                    <p class="text-sm text-slate-600 mb-3">Setup a New Prototype Lab for "Integrated Dairy & Smart Hybrid Energy Systems" (Sept 2015). Established a "Center for Energy Resources and Development (CERD)" at IIT (BHU) under the MHRD F.A.S.T. scheme.</p>
-
-                    <span class="inline-block bg-cyan-100 text-cyan-800 text-xs px-2 py-0.5 rounded-full font-semibold">Infrastructure Development</span>
-
-                </div>
-
-               
-
-                <!-- Project 3: Social Activities -->
-
-                <div class="bg-slate-50 p-5 rounded-lg border border-slate-200 card-hover">
-
-                    <div class="flex items-center justify-between mb-2">
-
-                        <h3 class="text-xl font-bold text-cyan-700">Social & Legal Advocacy</h3>
-
-                        <i class="fas fa-handshake-angle text-2xl text-cyan-500"></i>
-
-                    </div>
-
-                    <p class="text-sm text-slate-600 mb-3">Founder President of the "Denotified Tribes Welfare Association (DTWA)". Filed WPIL 13206/2013 in the Allahabad High Court for the righteous use of reservation policy.</p>
-
-                    <span class="inline-block bg-cyan-100 text-cyan-800 text-xs px-2 py-0.5 rounded-full font-semibold">Community Service</span>
-
-                </div>
-
-            </div>
-
-        </section>
-
- 
-
-        <!-- Section: Contact & Personal Info -->
-
-        <section id="contact" class="bg-slate-800 rounded-xl shadow-2xl p-6 lg:p-8 text-white">
-
-            <h2 class="text-3xl font-bold text-cyan-400 mb-6 border-b border-slate-700 pb-2">Connect & Information</h2>
-
-           
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-                <!-- Contact Details -->
-
-                <div>
-
-                    <h3 class="text-xl font-semibold mb-4 flex items-center"><i class="fas fa-paper-plane mr-2 text-cyan-400"></i>Contact Details</h3>
-
-                    <div class="space-y-3 text-sm">
-
-                        <div class="flex items-center">
-
-                            <i class="fas fa-envelope mr-3 w-4 text-cyan-400"></i>
-
-                            <a href="mailto:kumarmanish8288@gmail.com" class="hover:text-cyan-400 transition">kumarmanish8288@gmail.com</a>
-
-                        </div>
-
-                        <div class="flex items-center">
-
-                            <i class="fas fa-mobile-alt mr-3 w-4 text-cyan-400"></i>
-
-                            <span>+91-8853951326</span>
-
-                        </div>
-
-                        <div class="flex items-center">
-
-                            <i class="fab fa-linkedin mr-3 w-4 text-cyan-400"></i>
-
-                            <a href="https://www.linkedin.com/in/manish-kumar-87025815/" target="_blank" class="hover:text-cyan-400 transition">LinkedIn Profile</a>
-
-                        </div>
-
-                        <div class="flex items-center">
-
-                            <i class="fas fa-map-marker-alt mr-3 w-4 text-cyan-400"></i>
-
-                            <span>IIT (BHU), Varanasi, India</span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
- 
-
-                <!-- Personal Information -->
-
-                <div>
-
-                    <h3 class="text-xl font-semibold mb-4 flex items-center"><i class="fas fa-user-circle mr-2 text-cyan-400"></i>Personal Info</h3>
-
-                    <div class="space-y-3 text-sm">
-
-                        <p><span class="font-semibold text-cyan-200">Date of Birth:</span> 21-06-1974</p>
-
-                        <p><span class="font-semibold text-cyan-200">Nationality:</span> Indian</p>
-
-                        <p><span class="font-semibold text-cyan-200">Languages:</span> English, Hindi</p>
-
-                        <p><span class="font-semibold text-cyan-200">Hobbies:</span> Astrology, Astrophysics, Meta-Physics, Music, Chess</p>
-
-                    </div>
-
-                </div>
-
-               
-
-                <!-- Book Published -->
-
-                <div>
-
-                    <h3 class="text-xl font-semibold mb-4 flex items-center"><i class="fas fa-book-reader mr-2 text-cyan-400"></i>Book Publication</h3>
-
-                    <p class="text-sm italic text-slate-300">
-
-                        "Coherent radiation generation by lasers and particle beams"
-
-                    </p>
-
-                    <p class="text-xs text-slate-400 mt-2">
-
-                        ISBN: 978-3-659-84512-3, Scholar's Press, 2016.
-
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
- 
-
-    </main>
-
- 
-
-    <!-- Footer -->
-
-    <footer class="bg-slate-900 py-6">
-
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-slate-400 text-sm">
-
-            <p>&copy; 2025 Dr. Manish Kumar Academic Profile. All rights reserved.</p>
-
-        </div>
-
-    </footer>
-
- 
-
-    <!-- JavaScript Core Logic -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Manish Kumar | Assistant Professor, IIT (BHU) Varanasi | ORCID 0000-0001-6053-3667</title>
+  
+  <!-- jQuery + DataTables for publications -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.8/css/jquery.dataTables.min.css">
+  <script src="https://cdn.datatables.net/1.13.8/js/jquery.dataTables.min.js"></script>
+  
+  <!-- bib-publication-list -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/vkaravir/bib-publication-list@master/bib-publication-list.css">
+  <script src="https://cdn.jsdelivr.net/gh/vkaravir/bib-publication-list@master/bib-list-min.js"></script>
+  
+  <!-- ORCID Badge CSS -->
+  <link rel="stylesheet" href="https://orcid.org/sites/default/files/modules/orcid-angular-client/build/orcid.css">
+  
+  <style>
+    :root {
+      --primary: #3498db;
+      --secondary: #2c3e50;
+      --accent: #e74c3c;
+      --light: #ecf0f1;
+      --dark: #34495e;
+      --shadow: 0 4px 12px rgba(0,0,0,0.15);
+      --orcid-blue: #A6CE39;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { 
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; 
+      line-height: 1.6; color: var(--dark);
+      background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }
+
+    /* Header */
+    header { 
+      background: white; 
+      box-shadow: var(--shadow);
+      position: sticky; top: 0; z-index: 100;
+    }
+    .header-content { 
+      display: flex; justify-content: space-between; align-items: center; 
+      padding: 1rem 0; 
+    }
+    .logo h1 { 
+      color: var(--secondary); font-size: 1.8rem; 
+      font-weight: 700; 
+    }
+    .header-info { 
+      text-align: right; 
+    }
+    .tagline { 
+      color: var(--primary); font-size: 0.95rem; font-weight: 500; margin-bottom: 0.25rem;
+    }
+    .orcid-badge {
+      display: inline-flex; align-items: center; gap: 0.5rem; font-size: 0.9rem;
+      color: var(--orcid-blue); font-weight: 600; text-decoration: none;
+    }
+    .orcid-badge:hover { color: #88b01a; }
+    .orcid-icon {
+      width: 18px; height: 18px; background: var(--orcid-blue);
+      mask: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><path fill="%23FFFFFF" d="M234.459 56.276c-6.447-25.035-24.451-44.44-49.599-50.371a50.804 50.804 0 0 0-6.804-1.064V2.319C178.056.847 177.203 0 176.156 0h-96.288c-1.047 0-1.9.847-1.9 1.894v2.52a50.804 50.804 0 0 0-6.804 1.064c-25.148 5.931-43.152 25.336-49.599 50.371C7.195 81.635 0 106.392 0 132.564c0 27.807 8.013 53.859 21.982 75.44 1.748 2.722 3.49 5.385 5.228 8.021l30.037 59.997c3.337 6.668 10.376 10.555 17.98 10.555 2.119 0 4.255-.328 6.329-.976l37.493-11.221c4.19-1.253 8.759-1.253 12.949 0l37.493 11.221c2.074.748 4.21 1.076 6.329.976 7.604 0 14.643-3.887 17.98-10.555l30.037-59.997c1.738-2.636 3.48-5.299 5.228-8.021 13.969-21.581 21.982-47.633 21.982-75.44 0-26.172-7.195-50.929-19.523-76.288ZM128 33.532a10.667 10.667 0 1 1 0-21.334 10.667 10.667 0 0 1 0 21.334Zm64 99.072h-32v64h-32v-64H96v64H64v-64H32v64H0v-64H32v-32h64v-32h32v32h64v32h32v64h-32v-64Zm0-32h-64v32h64v-32Z"/></svg>') no-repeat center;
+      mask-size: contain;
+    }
+    
+    nav a { 
+      color: var(--dark); text-decoration: none; margin-left: 2rem; 
+      font-weight: 500; transition: color 0.3s;
+    }
+    nav a:hover, nav a.active { color: var(--primary); }
+
+    /* Hero */
+    .hero { 
+      text-align: center; padding: 4rem 0; background: white; margin-bottom: 3rem;
+      box-shadow: var(--shadow);
+    }
+    .hero h2 { 
+      font-size: 2.5rem; color: var(--secondary); margin-bottom: 1rem; 
+    }
+    .hero p { 
+      font-size: 1.3rem; color: #7f8c8d; max-width: 600px; margin: 0 auto 1.5rem;
+      font-style: italic;
+    }
+    .hero-links {
+      display: flex; gap: 1.5rem; justify-content: center; align-items: center;
+      flex-wrap: wrap;
+    }
+
+    /* Section */
+    section { 
+      background: white; margin-bottom: 3rem; border-radius: 12px; 
+      padding: 2.5rem; box-shadow: var(--shadow);
+    }
+    section h2 { 
+      color: var(--secondary); font-size: 1.8rem; margin-bottom: 1.5rem;
+      border-bottom: 3px solid var(--primary); padding-bottom: 0.5rem;
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+
+    /* Responsive Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .gallery-item {
+      position: relative; overflow: hidden; border-radius: 12px;
+      box-shadow: var(--shadow); transition: transform 0.3s;
+    }
+    .gallery-item:hover { transform: translateY(-5px); }
+    .gallery-item img {
+      width: 100%; height: 220px; object-fit: cover; transition: transform 0.3s;
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-item figcaption {
+      padding: 1rem; background: white; text-align: center;
+      font-weight: 500; color: var(--dark);
+    }
+
+    /* Publications Table */
+    #pubTable_wrapper { margin-top: 2rem; }
+    #pubTable { font-size: 0.92rem; width: 100% !important; }
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter { margin-bottom: 1rem; }
+    .doi-link a { color: var(--primary); text-decoration: none; }
+    .doi-link a:hover { text-decoration: underline; }
+<!-- JavaScript Core Logic -->
 
     <script>
 
@@ -1228,10 +496,267 @@
             filterPublications('all'); // Initialize the publication list
 
         });
- 
+
     </script>
 
+    /* Timeline */
+    .timeline {
+      position: relative; padding-left: 2rem; max-width: 800px; margin: 0 auto;
+    }
+    .timeline::before {
+      content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+      width: 2px; background: var(--primary);
+    }
+    .timeline-item {
+      position: relative; margin-bottom: 2.5rem; padding-left: 2rem;
+    }
+    .timeline-item::before {
+      content: ''; position: absolute; left: -34px; top: 0.5rem;
+      width: 12px; height: 12px; background: var(--primary);
+      border-radius: 50%; box-shadow: 0 0 0 3px white;
+    }
+    .timeline-date { 
+      font-weight: 700; color: var(--primary); font-size: 0.95rem; 
+    }
+    .timeline-title { 
+      font-size: 1.2rem; color: var(--secondary); margin: 0.25rem 0; 
+    }
 
+    /* Projects */
+    .projects-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    .project-card {
+      background: var(--light); padding: 1.5rem; border-radius: 8px;
+      border-left: 4px solid var(--primary);
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    /* Footer */
+    footer { 
+      background: var(--secondary); color: white; text-align: center;
+      padding: 2rem 0; margin-top: 3rem;
+    }
+    footer a { color: var(--primary); text-decoration: none; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .header-content { flex-direction: column; gap: 1rem; text-align: center; }
+      nav a { margin: 0 1rem; }
+      .hero h2 { font-size: 2rem; }
+      section { padding: 1.5rem; margin-bottom: 2rem; }
+      .gallery-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+      .hero-links { flex-direction: column; gap: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <div class="header-content">
+        <div class="logo">
+          <h1>Dr. Manish Kumar</h1>
+        </div>
+        <div class="header-info">
+          <div class="tagline">Assistant Professor, IIT (BHU) Varanasi</div>
+          <a href="https://orcid.org/0000-0001-6053-3667" target="_blank" 
+             class="orcid-badge" title="ORCID Profile">
+            <span class="orcid-icon"></span>
+            ORCID: 0000-0001-6053-3667
+          </a>
+        </div>
+        <nav>
+          <a href="#home" class="active">Home</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#publications">Publications</a>
+          <a href="#timeline">Career</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <div class="container">
+      <h2>Bridging Theoretical Physics with Practical Energy Solutions</h2>
+      <p>"I merge advanced theoretical physics with practical renewable energy applications to solve real-world power challenges."</p>
+      <div class="hero-links">
+        <a href="https://orcid.org/0000-0001-6053-3667" target="_blank" 
+           class="orcid-badge" style="font-size: 1.1rem;">
+          <span class="orcid-icon" style="width: 24px; height: 24px;"></span>
+          ORCID: 0000-0001-6053-3667
+        </a>
+        <a href="https://www.linkedin.com/in/manish-kumar-87025815/" target="_blank">LinkedIn</a>
+        <a href="mailto:kumarmanish8288@gmail.com">Email</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery">
+    <div class="container">
+      <h2>📸 Photo Gallery</h2>
+      <p>Research visits, conferences, and project demonstrations.</p>
+      <div class="gallery-grid">
+        <figure class="gallery-item">
+          <img src="assets/images/gallery/paris2022.jpg" alt="Paris Conference 2022" loading="lazy">
+          <figcaption>Paris Conference, 2022</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="assets/images/gallery/prague2019.jpg" alt="Prague Terahertz Meeting" loading="lazy">
+          <figcaption>Prague Terahertz Meeting, 2019</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="assets/images/gallery/meghalaya.jpg" alt="Meghalaya Field Visit" loading="lazy">
+          <figcaption>Meghalaya Field Visit, 2015</figcaption>
+        </figure>
+        <figure class="gallery-item">
+          <img src="assets/images/gallery/azamgarh.jpg" alt="Azamgarh Demo 2016" loading="lazy">
+          <figcaption>Azamgarh Project Demo, 2016</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Publications -->
+  <section id="publications">
+    <div class="container">
+      <h2>📚 Peer-Reviewed Publications <a href="https://orcid.org/0000-0001-6053-3667" target="_blank" class="orcid-badge" style="font-size: 0.85rem; opacity: 0.8;">
+        ORCID: 0000-0001-6053-3667
+      </a></h2>
+      <p>Searchable list of 14+ publications. Use the search box above table or filter by keywords like "THz", "plasma", "2019".</p>
+      <table id="pubTable" class="display" style="width:100%"></table>
+    </div>
+  </section>
+
+  <!-- Timeline (unchanged) -->
+  <section id="timeline">
+    <div class="container">
+      <h2>🎓 Academic & Professional Journey</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">Jul 2004 – Present</div>
+          <div class="timeline-title">Assistant Professor, IIT (BHU) Varanasi</div>
+          <p>13+ years teaching UG/PG, guided 1 PhD + 16 B.Tech projects, established CERD center</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Nov 2001 – Jul 2004</div>
+          <div class="timeline-title">Junior Telecom Officer, BSNL</div>
+          <p>Managed BTS/BSC/MSC operations and CCN responsibilities</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Jan 2008 – Dec 2010</div>
+          <div class="timeline-title">Ph.D. Plasma Physics, IIT Delhi</div>
+          <p>Thesis: Coherent Radiation Generation (CGPA: 8.00)</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2000</div>
+          <div class="timeline-title">M.Tech. Energy Studies, IIT Delhi</div>
+          <p>CGPA: 8.5 | Project: Nonlinear Alfvén waves</p>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">1997</div>
+          <div class="timeline-title">B.E. Electrical Engineering, MNNIT Allahabad</div>
+          <p>69.22% | Project: Digital controller design</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects (unchanged) -->
+  <section id="projects">
+    <div class="container">
+      <h2>🚀 Key Projects & Contributions</h2>
+      <div class="projects-grid">
+        <div class="project-card">
+          <h3>1.5 MW Integrated Dairy & Smart Hybrid Energy Systems</h3>
+          <p>Live demonstration in Azamgarh (2016), 5-acre pilot proposal for Meghalaya, prototype lab at IIT(BHU)</p>
+        </div>
+        <div class="project-card">
+          <h3>Center for Energy Resources & Development (CERD)</h3>
+          <p>Established under MHRD F.A.S.T. scheme at IIT(BHU)</p>
+        </div>
+        <div class="project-card">
+          <h3>Book Publication</h3>
+          <p><em>Coherent radiation generation by lasers and particle beams</em><br>ISBN: 978-3-659-84512-3, Scholar's Press, 2016</p>
+        </div>
+        <div class="project-card">
+          <h3>Social Advocacy</h3>
+          <p>Founder President, Denotified Tribes Welfare Association (DTWA). Filed WPIL 13206/2013 in Allahabad HC</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact (unchanged) -->
+  <section id="contact">
+    <div class="container">
+      <h2>📞 Connect</h2>
+      <div class="contact-grid">
+        <div>
+          <h3>Contact</h3>
+          <p><strong>Office:</strong> kumarmanish8288@gmail.com</p>
+          <p><strong>Personal:</strong> kumarmanish21@yahoo.com</p>
+          <p><strong>Mobile:</strong> +91-8853951326, +91-7607101326</p>
+        </div>
+        <div>
+          <h3>Personal</h3>
+          <p><strong>DOB:</strong> 21-06-1974 | <strong>Nationality:</strong> Indian</p>
+          <p><strong>Languages:</strong> English, Hindi</p>
+          <p><strong>Hobbies:</strong> Astrophysics, Music, Chess, Cooking</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Dr. Manish Kumar | 
+         <a href="https://orcid.org/0000-0001-6053-3667" target="_blank" class="orcid-badge">
+           ORCID: 0000-0001-6053-3667
+         </a> | 
+         <a href="mailto:kumarmanish8288@gmail.com">Email</a> | 
+         <a href="https://www.linkedin.com/in/manish-kumar-87025815/" target="_blank">LinkedIn</a> | 
+         <a href="https://kumarmanish8288-sudo.github.io/kumarmanish2106">GitHub Pages</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Publications JavaScript -->
+  <script>
+    $(document).ready(function() {
+      // Load publications from BibTeX
+      bibtexify("publications.bib", "pubTable", {
+        template: "#default",
+        datatable: {
+          pageLength: 25,
+          order: [[0, "desc"]],  
+          pageLength: 50,
+          dom: 'Bfrtip',
+          buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
+        }
+      });
+
+      // Smooth scrolling for navigation
+      $('nav a[href^="#"]').click(function(e) {
+        e.preventDefault();
+        $('html, body').animate({
+          scrollTop: $($(this).attr('href')).offset().top - 80
+        }, 800);
+        $('nav a').removeClass('active');
+        $(this).addClass('active');
+      });
+    });
+  </script>
 </body>
-
 </html>
