@@ -129,375 +129,6 @@
     .dataTables_wrapper .dataTables_filter { margin-bottom: 1rem; }
     .doi-link a { color: var(--primary); text-decoration: none; }
     .doi-link a:hover { text-decoration: underline; }
-<!-- JavaScript Core Logic -->
-
-    <script>
-
-        // --- Navigation Logic ---
-
-        function scrollToSection(id) {
-
-            const element = document.getElementById(id);
-
-            if (element) {
-
-                const navHeight = 80; // Height of sticky header
-
-                const elementPosition = element.getBoundingClientRect().top;
-
-                const offsetPosition = elementPosition + window.pageYOffset - navHeight - 20;
-
- 
-
-                window.scrollTo({
-
-                    top: offsetPosition,
-
-                    behavior: "smooth"
-
-                });
-
-            }
-
-        }
-
- 
-
-        function toggleMobileMenu() {
-
-            const menu = document.getElementById('mobile-menu');
-
-            menu.classList.toggle('hidden');
-
-        }
-
- 
-
-        // --- Data Definitions ---
-
-        const publicationData = [
-
-            { type: 'journal', title: 'Correlation of Prime Number with English & Hindi Alphabets', source: 'submitted to 4th International Virtual (Online Conference) Multidisciplinary Conference', date: 'Dec 2025' },
-
-            { type: 'journal', title: 'Review of electromagnetic theory based on two units viz. second & meter', source: 'IJFMR Volume 7, Issue 1', date: 'Jan-Feb 2025', tag: 'Electromagnetic Theory' },
-
-            { type: 'conference', title: 'Effects of pH Change on the Operation of Electrolyzer and Fuel Cell', source: '2020 IEEE Students\' Conference on Engineering & Systems (SCES)', date: 'Jul 2020', tag: 'Energy Studies' },
-
-            { type: 'journal', title: 'Fuel Cells: Contamination and Recent Advancements for its Stabilization', source: 'MATTER: International Journal of Science and Technology, 5(3)', date: '2019', tag: 'Energy Studies' },
-
-            { type: 'journal', title: 'Effect of Magnetic Field Tapering on Whistler Pumped Free Electron Laser', source: 'AIP Advances 9, 025207', date: '2019', tag: 'Plasma Physics' },
-
-            { type: 'journal', title: 'Atomic energy as well as gravitational energy is another form of electrical energy', source: 'Journal of Mathematics and System Science 6', date: 'Feb 2017', tag: 'Theoretical Physics' },
-
-            { type: 'journal', title: 'Linear mode conversion of THz radiation into THz surface magnetoplasmons on a rippled surface of magnetized n-InSb', source: 'Optics Letters Vol. 41, No. 7', date: 'Apr 2016', tag: 'Terahertz Radiation' },
-
-            { type: 'journal', title: 'GOD doesn\'t play dice', source: 'International Journal of Scientific & Engineering Research, Volume 7, Issue 1', date: 'Jan 2016', tag: 'Meta-Physics' },
-
-            { type: 'journal', title: 'Comparative study of dispersion characteristics of uniaxial crystalline optical fibre under the extreme cases of helix pitch angles', source: 'Journal of Modern Optics', date: '2013', tag: 'Optics' },
-
-            { type: 'journal', title: 'Modal study of plasma cladded cylindrical optical fiber', source: 'Journal of Electromagnetic Waves and Applications', date: '2013', tag: 'Plasma/Optics' },
-
-            { type: 'journal', title: 'Beat excitation of Terahertz radiation in a semiconductor slab in a magnetic field', source: 'Journal of Physics and Chemistry of Solids 73', date: '2012', tag: 'Terahertz Radiation' },
-
-            { type: 'journal', title: 'Excitation of THz plasmons Eigen mode of a parallel plane guiding system by an electron beam', source: 'J. Appl. Phys. 108, 123303', date: '2010', tag: 'Terahertz Radiation' },
-
-            { type: 'journal', title: 'Resonant beat wave excitation of terahertz radiation in a magnetized plasma channel', source: 'Phys. Scr. 81, 045504', date: '2010', tag: 'Terahertz Radiation' },
-
-            { type: 'journal', title: 'Plasma effects in a travelling wave tube', source: 'Phys. Scr. 81, 025502', date: '2010', tag: 'Plasma Physics' },
-
-            { type: 'conference', title: 'Quantum Origin of Nano', source: 'International Conference on Advances in Physics, Mathematics and Applied Science Physics Conference 2022', date: 'Mar 2022', tag: 'Nano' },
-
-            { type: 'conference', title: 'Origin of Nano', source: '6th Annual Congress on Atomic, Nuclear and Plasma Physics International Webinar', date: 'Aug 2021', tag: 'Nano' },
-
-            { type: 'conference', title: 'Salvation theory as per the GOD\'s wish', source: '3rd International Conference on Applied Physics and Mathematics', date: 'Oct 2019', tag: 'Meta-Physics' },
-
-            { type: 'conference', title: 'Reverse physics of life in universe/multiverse from electrical energy flow from GOD in space through astrology of the life', source: 'Eurasia Research 2019, 3rd ICSTR Bangkok', date: 'Jul 2019', tag: 'Theoretical Physics' },
-
-            { type: 'conference', title: 'Terahertz radiation generation from tapered magnetic field Free Electron Laser', source: 'EMN Meeting on Terahertz 2019', date: 'Jun 2019', tag: 'Terahertz Radiation' },
-
-            { type: 'conference', title: 'Creation of Atomic Particles from Electrical Energy Flow from GOD in Space', source: '4th International Conference on Atomic and Nuclear Physics', date: 'Oct 2018', tag: 'Theoretical Physics' },
-
-            { type: 'conference', title: 'Atomic energy is the source of power which is another form of electrical energy', source: 'International Conference on Atomic and Nuclear Physics', date: 'Nov 2016', tag: 'Theoretical Physics' },
-
-            { type: 'conference', title: 'GOD doesn\'t play dice', source: 'International Conference on Physics', date: 'Jun 2016', tag: 'Meta-Physics' },
-
-            { type: 'conference', title: 'Workshop on Integrated Dairy & Smart Hybrid Energy Systems (Resource Person)', source: 'Gujarat Technological University', date: 'Apr 2015', tag: 'Energy Systems' },
-
-            { type: 'conference', title: 'Modal study of plasma cladded cylindrical optical fiber', source: 'Winter Symposium on Photonics and Optoelectronics (W-SOPO 2013)', date: 'Dec 2013', tag: 'Optics' },
-
-            { type: 'conference', title: 'Electrification of BHU hostels by Photovoltaic modules', source: 'Workshop on Advances in Energy Engineering & Technology', date: 'Jun 2013', tag: 'Energy Systems' },
-
-            { type: 'conference', title: 'Resonant beat wave excitation of terahertz radiation in a magnetized plasma channel', source: 'International Workshop on the Terahertz Technology 2009', date: 'Dec 2009', tag: 'Terahertz Radiation' }
-
-            // Note: The total conference count is 34+, I am including only the named ones for demonstration.
-
-        ];
-
- 
-
-        let currentFilterType = 'all';
-
- 
-
-        function renderPublications(publications) {
-
-            const listElement = document.getElementById('publicationList');
-
-            listElement.innerHTML = '';
-
-           
-
-            if (publications.length === 0) {
-
-                listElement.innerHTML = `<p class="text-center text-slate-500 py-10">No publications found matching the current filter or search criteria.</p>`;
-
-                return;
-
-            }
-
- 
-
-            publications.forEach(pub => {
-
-                const isJournal = pub.type === 'journal';
-
-                const tagColor = isJournal ? 'bg-blue-100 text-blue-800' : 'bg-green-100 text-green-800';
-
-                const icon = isJournal ? 'fas fa-file-alt' : 'fas fa-users';
-
-                const pubElement = document.createElement('div');
-
-                pubElement.className = 'p-5 bg-white border border-gray-200 rounded-xl shadow-sm hover:shadow-md transition card-hover';
-
-                pubElement.innerHTML = `
-
-                    <div class="flex items-start justify-between">
-
-                        <div>
-
-                            <p class="text-xs font-semibold uppercase ${tagColor} px-2 py-0.5 rounded-full mb-2 inline-flex items-center">
-
-                                <i class="${icon} mr-1.5"></i>${isJournal ? 'Journal Paper' : 'Conference / Workshop'}
-
-                            </p>
-
-                            <h4 class="text-lg font-semibold text-slate-800">${pub.title}</h4>
-
-                            <p class="text-sm text-slate-500 mt-1">${pub.source}</p>
-
-                        </div>
-
-                        <div class="text-right ml-4">
-
-                            <span class="text-sm font-medium text-slate-600">${pub.date}</span>
-
-                            ${pub.tag ? `<span class="block text-xs text-slate-400 mt-1">${pub.tag}</span>` : ''}
-
-                        </div>
-
-                    </div>
-
-                `;
-
-                listElement.appendChild(pubElement);
-
-            });
-
-        }
-
- 
-
-        function filterPublications(type = null) {
-
-            const searchInput = document.getElementById('publicationSearch').value.toLowerCase();
-
-           
-
-            if (type) {
-
-                currentFilterType = type;
-
-            }
-
- 
-
-            const filtered = publicationData.filter(pub => {
-
-                const typeMatch = currentFilterType === 'all' || pub.type === currentFilterType;
-
-                const searchMatch = pub.title.toLowerCase().includes(searchInput) || pub.source.toLowerCase().includes(searchInput) || (pub.tag && pub.tag.toLowerCase().includes(searchInput));
-
-                return typeMatch && searchMatch;
-
-            });
-
-           
-
-            // Update button visual state (optional, for advanced UI)
-
-            document.querySelectorAll('#publications button').forEach(btn => {
-
-                btn.classList.remove('bg-cyan-600', 'text-white');
-
-                btn.classList.add('bg-cyan-50', 'text-cyan-700');
-
-            });
-
- 
-
-            const activeButton = document.querySelector(`#publications button[onclick*="'${currentFilterType}'"]`);
-
-            if (activeButton) {
-
-                activeButton.classList.remove('bg-cyan-50', 'text-cyan-700');
-
-                activeButton.classList.add('bg-cyan-600', 'text-white');
-
-            }
-
- 
-
-            renderPublications(filtered);
-
-        }
-
- 
-
-        // --- Chart Initialization ---
-
-        function initializeChart() {
-
-            const ctx = document.getElementById('outputChart').getContext('2d');
-
-           
-
-            // Data adjusted to reflect the magnitude of the CV entries (14+ papers, 34+ conferences)
-
-            const chartData = {
-
-                labels: ['Refereed Journal Papers (14+)', 'International/National Conferences (34+)', 'Major Projects (2+)', 'Book Published (1)'],
-
-                datasets: [{
-
-                    label: 'Academic Output Volume',
-
-                    data: [14, 34, 4, 1],
-
-                    backgroundColor: [
-
-                        'rgba(51, 65, 85, 0.8)', // Slate
-
-                        'rgba(6, 182, 212, 0.8)', // Cyan
-
-                        'rgba(16, 185, 129, 0.8)', // Green
-
-                        'rgba(245, 158, 11, 0.8)' // Amber
-
-                    ],
-
-                    borderColor: [
-
-                        '#334155',
-
-                        '#06b6d4',
-
-                        '#10b981',
-
-                        '#f59e0b'
-
-                    ],
-
-                    borderWidth: 1
-
-                }]
-
-            };
-
- 
-
-            new Chart(ctx, {
-
-                type: 'bar',
-
-                data: chartData,
-
-                options: {
-
-                    responsive: true,
-
-                    maintainAspectRatio: false,
-
-                    indexAxis: 'y', // Horizontal bars for readability
-
-                    scales: {
-
-                        x: {
-
-                            beginAtZero: true,
-
-                            title: {
-
-                                display: true,
-
-                                text: 'Volume Count'
-
-                            },
-
-                            ticks: {
-
-                                precision: 0
-
-                            }
-
-                        },
-
-                        y: {
-
-                            grid: {
-
-                                display: false
-
-                            }
-
-                        }
-
-                    },
-
-                    plugins: {
-
-                        legend: {
-
-                            display: false
-
-                        },
-
-                        title: {
-
-                            display: false
-
-                        }
-
-                    }
-
-                }
-
-            });
-
-        }
-
- 
-
-        // --- Initialization on Load ---
-
-        document.addEventListener('DOMContentLoaded', function() {
-
-            initializeChart();
-
-            filterPublications('all'); // Initialize the publication list
-
-        });
-
-    </script>
 
     /* Timeline */
     .timeline {
@@ -638,7 +269,7 @@
     </div>
   </section>
 
-  <!-- Timeline (unchanged) -->
+  <!-- Timeline -->
   <section id="timeline">
     <div class="container">
       <h2>🎓 Academic & Professional Journey</h2>
@@ -672,7 +303,7 @@
     </div>
   </section>
 
-  <!-- Projects (unchanged) -->
+  <!-- Projects -->
   <section id="projects">
     <div class="container">
       <h2>🚀 Key Projects & Contributions</h2>
@@ -697,7 +328,7 @@
     </div>
   </section>
 
-  <!-- Contact (unchanged) -->
+  <!-- Contact -->
   <section id="contact">
     <div class="container">
       <h2>📞 Connect</h2>
@@ -732,22 +363,74 @@
     </div>
   </footer>
 
-  <!-- Publications JavaScript -->
+  <!-- JavaScript Core Logic (your custom functions & data) -->
+  <script>
+    // Navigation helper (currently not used, but kept if needed)
+    function scrollToSection(id) {
+      const element = document.getElementById(id);
+      if (element) {
+        const navHeight = 80;
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navHeight - 20;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+    }
+
+    function toggleMobileMenu() {
+      const menu = document.getElementById('mobile-menu');
+      if (menu) menu.classList.toggle('hidden');
+    }
+
+    // Publication data (if you later use your own custom renderer)
+    const publicationData = [
+      { type: 'journal', title: 'Correlation of Prime Number with English & Hindi Alphabets', source: 'submitted to 4th International Virtual (Online Conference) Multidisciplinary Conference', date: 'Dec 2025' },
+      { type: 'journal', title: 'Review of electromagnetic theory based on two units viz. second & meter', source: 'IJFMR Volume 7, Issue 1', date: 'Jan-Feb 2025', tag: 'Electromagnetic Theory' },
+      { type: 'conference', title: 'Effects of pH Change on the Operation of Electrolyzer and Fuel Cell', source: '2020 IEEE Students\' Conference on Engineering & Systems (SCES)', date: 'Jul 2020', tag: 'Energy Studies' },
+      { type: 'journal', title: 'Fuel Cells: Contamination and Recent Advancements for its Stabilization', source: 'MATTER: International Journal of Science and Technology, 5(3)', date: '2019', tag: 'Energy Studies' },
+      { type: 'journal', title: 'Effect of Magnetic Field Tapering on Whistler Pumped Free Electron Laser', source: 'AIP Advances 9, 025207', date: '2019', tag: 'Plasma Physics' },
+      { type: 'journal', title: 'Atomic energy as well as gravitational energy is another form of electrical energy', source: 'Journal of Mathematics and System Science 6', date: 'Feb 2017', tag: 'Theoretical Physics' },
+      { type: 'journal', title: 'Linear mode conversion of THz radiation into THz surface magnetoplasmons on a rippled surface of magnetized n-InSb', source: 'Optics Letters Vol. 41, No. 7', date: 'Apr 2016', tag: 'Terahertz Radiation' },
+      { type: 'journal', title: 'GOD doesn\'t play dice', source: 'International Journal of Scientific & Engineering Research, Volume 7, Issue 1', date: 'Jan 2016', tag: 'Meta-Physics' },
+      { type: 'journal', title: 'Comparative study of dispersion characteristics of uniaxial crystalline optical fibre under the extreme cases of helix pitch angles', source: 'Journal of Modern Optics', date: '2013', tag: 'Optics' },
+      { type: 'journal', title: 'Modal study of plasma cladded cylindrical optical fiber', source: 'Journal of Electromagnetic Waves and Applications', date: '2013', tag: 'Plasma/Optics' },
+      { type: 'journal', title: 'Beat excitation of Terahertz radiation in a semiconductor slab in a magnetic field', source: 'Journal of Physics and Chemistry of Solids 73', date: '2012', tag: 'Terahertz Radiation' },
+      { type: 'journal', title: 'Excitation of THz plasmons Eigen mode of a parallel plane guiding system by an electron beam', source: 'J. Appl. Phys. 108, 123303', date: '2010', tag: 'Terahertz Radiation' },
+      { type: 'journal', title: 'Resonant beat wave excitation of terahertz radiation in a magnetized plasma channel', source: 'Phys. Scr. 81, 045504', date: '2010', tag: 'Terahertz Radiation' },
+      { type: 'journal', title: 'Plasma effects in a travelling wave tube', source: 'Phys. Scr. 81, 025502', date: '2010', tag: 'Plasma Physics' },
+      { type: 'conference', title: 'Quantum Origin of Nano', source: 'International Conference on Advances in Physics, Mathematics and Applied Science Physics Conference 2022', date: 'Mar 2022', tag: 'Nano' },
+      { type: 'conference', title: 'Origin of Nano', source: '6th Annual Congress on Atomic, Nuclear and Plasma Physics International Webinar', date: 'Aug 2021', tag: 'Nano' },
+      { type: 'conference', title: 'Salvation theory as per the GOD\'s wish', source: '3rd International Conference on Applied Physics and Mathematics', date: 'Oct 2019', tag: 'Meta-Physics' },
+      { type: 'conference', title: 'Reverse physics of life in universe/multiverse from electrical energy flow from GOD in space through astrology of the life', source: 'Eurasia Research 2019, 3rd ICSTR Bangkok', date: 'Jul 2019', tag: 'Theoretical Physics' },
+      { type: 'conference', title: 'Terahertz radiation generation from tapered magnetic field Free Electron Laser', source: 'EMN Meeting on Terahertz 2019', date: 'Jun 2019', tag: 'Terahertz Radiation' },
+      { type: 'conference', title: 'Creation of Atomic Particles from Electrical Energy Flow from GOD in Space', source: '4th International Conference on Atomic and Nuclear Physics', date: 'Oct 2018', tag: 'Theoretical Physics' },
+      { type: 'conference', title: 'Atomic energy is the source of power which is another form of electrical energy', source: 'International Conference on Atomic and Nuclear Physics', date: 'Nov 2016', tag: 'Theoretical Physics' },
+      { type: 'conference', title: 'GOD doesn\'t play dice', source: 'International Conference on Physics', date: 'Jun 2016', tag: 'Meta-Physics' },
+      { type: 'conference', title: 'Workshop on Integrated Dairy & Smart Hybrid Energy Systems (Resource Person)', source: 'Gujarat Technological University', date: 'Apr 2015', tag: 'Energy Systems' },
+      { type: 'conference', title: 'Modal study of plasma cladded cylindrical optical fiber', source: 'Winter Symposium on Photonics and Optoelectronics (W-SOPO 2013)', date: 'Dec 2013', tag: 'Optics' },
+      { type: 'conference', title: 'Electrification of BHU hostels by Photovoltaic modules', source: 'Workshop on Advances in Energy Engineering & Technology', date: 'Jun 2013', tag: 'Energy Systems' },
+      { type: 'conference', title: 'Resonant beat wave excitation of terahertz radiation in a magnetized plasma channel', source: 'International Workshop on the Terahertz Technology 2009', date: 'Dec 2009', tag: 'Terahertz Radiation' }
+    ];
+
+    // If later you add a custom HTML list with id="publicationList" and a search input id="publicationSearch",
+    // you can reuse renderPublications/filterPublications here.
+  </script>
+
+  <!-- Publications JavaScript: BibTeX + smooth nav -->
   <script>
     $(document).ready(function() {
-      // Load publications from BibTeX
       bibtexify("publications.bib", "pubTable", {
         template: "#default",
         datatable: {
-          pageLength: 25,
-          order: [[0, "desc"]],  
           pageLength: 50,
+          order: [[0, "desc"]],
           dom: 'Bfrtip',
           buttons: ['copy', 'csv', 'excel', 'pdf', 'print']
         }
       });
 
-      // Smooth scrolling for navigation
       $('nav a[href^="#"]').click(function(e) {
         e.preventDefault();
         $('html, body').animate({
