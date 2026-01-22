@@ -105,8 +105,26 @@
     /* Responsive Gallery */
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+    figure {
+      background:#fff;
+      border-radius:8px;
+      overflow:hidden;
+      box-shadow:0 3px 8px rgba(0,0,0,.12);
+      margin:0;
+    }
+    figure img {
+      width:100%;
+      height:180px;
+      object-fit:cover;
+      display:block;
+    }
+    figcaption {
+      padding:.6rem .75rem;
+      font-size:.9rem;
+      text-align:center;
     }
     .gallery-item {
       position: relative; overflow: hidden; border-radius: 12px;
@@ -455,3 +473,4 @@
   </script>
 </body>
 </html>
+
