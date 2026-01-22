@@ -108,6 +108,31 @@
       grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
       gap:1.25rem;
     }
+    figure {
+      background:#fff;
+      border-radius:8px;
+      overflow:hidden;
+      box-shadow:0 3px 8px rgba(0,0,0,.12);
+      margin:0;
+    }
+    figure img {
+      width:100%;
+      height:180px;
+      object-fit:cover;
+      display:block;
+    }
+    figcaption {
+      padding:.6rem .75rem;
+      font-size:.9rem;
+      text-align:center;
+    }
+
+    footer p { text-align:center; margin:0; font-size:.85rem; }
+    @media (max-width:600px) {
+      header .container { text-align:center; }
+      nav { margin-top:.5rem; }
+      nav a { display:inline-block; margin:.2rem .5rem; }
+    }
     .gallery-item {
       position: relative; overflow: hidden; border-radius: 12px;
       box-shadow: var(--shadow); transition: transform 0.3s;
@@ -497,4 +522,5 @@
   </script>
 </body>
 </html>
+
 
