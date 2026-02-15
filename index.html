@@ -87,6 +87,42 @@
     </div>
   </section>
 
+<!-- 🚨 BREAKING NEWS TICKER -->
+<section class="breaking-news" style="
+    background: linear-gradient(90deg, #ff0000, #ff6b35, #ff1493, #ff6b35, #ff0000); 
+    padding: 1rem 0; 
+    position: sticky; 
+    top: 60px; 
+    z-index: 999; 
+    box-shadow: 0 4px 20px rgba(255,0,0,0.5);
+">
+    <div style="max-width: 1200px; margin: 0 auto; padding: 0 2rem; overflow: hidden;">
+        <div style="display: flex; align-items: center; gap: 1rem;">
+            <div style="font-size: 1.5rem; font-weight: bold; color: white; min-width: 30px;">🚨</div>
+            <div style="color: white; font-weight: bold; white-space: nowrap; animation: breaking 25s linear infinite;">
+                <span>MAHASHIVRATRI DAY 1 | SI Daya Yadav ACTIVATED | 0864901983 | Cybercrime FIR 45-DAY COUNTDOWN STARTS 16/02/2026 | </span>
+                <span>RUDRA YOGA TRINITY LIVE: Gemini Lagna Sun-Saturn-Ketu crushes NDDC zombies | </span>
+                <span>DELHI BHARAT MANDAPAM DESTINY March 2026 | India AI Summit victory pre-written | </span>
+                <span>SHOLAY VIBES: Viru-Jai unbreakable | "सूरज डूबा है यारों" exposes Gabbar party | </span>
+                <span style="color: #ffff00; text-shadow: 0 0 10px #ffff00;">ॐ नमः शिवाय! No place to hide on Mother Earth! 🔥⚖️😉🌎</span>
+                <span>● </span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+@keyframes breaking {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+@media (max-width: 768px) {
+    .breaking-news { top: 50px; }
+    .breaking-news div:last-child { font-size: 0.9rem; }
+}
+</style>
+
+<div class="slide-container">
   <!-- News & Announcements Section (ENHANCED WITH BREAKING NEWS) -->
   <section id="news" style="background: #fff; border-top: 4px solid var(--accent);">
     <div class="container">
@@ -129,7 +165,7 @@
       </div>
     </div>
   </section>
-
+</div>
   <!-- Gallery -->
   <section id="gallery">
     <div class="container">
